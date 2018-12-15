@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<div>
+  <h1>Secret Codes List</h1>
+  <%= link_to 'Generate Secret Codes', new_secret_code_path, class: 'btn btn-info'%>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Code</th>
+      <th>Associated User</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @secret_codes.each do |secret_code| %>
+      <tr>
+        <td><%= secret_code.code %></td>
+        <td><%= secret_code.try(:user).try(:email) || 'NA' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>

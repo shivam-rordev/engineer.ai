@@ -1,0 +1,6 @@
+<% if current_user.has_role? :admin %>
+	<h1>Generate Secret Codes</h1>
+	<%= render 'form', secret_code: @secret_code %>
+<% end %>
+<br>
+

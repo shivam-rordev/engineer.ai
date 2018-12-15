@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>engineer.ai</title>
+    <%= csrf_meta_tags %>
+    <%= favicon_link_tag %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+		<nav class="navbar navbar-default">
+		  <div class="container-fluid">
+		    <div class="navbar-header">
+		      <a class="navbar-brand" href= <%=root_path%> >
+		        <%= image_tag('logo.jpg',size: "25") %>
+		      </a>
+		    </div>
+		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		    <ul class="nav navbar-nav navbar-right">
+		      <% if user_signed_in? %>
+		       	<li>
+		       		<%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+		       	</li>
+		      <% else %>
+		       	<li>
+		       		<%= link_to('Login', new_user_session_path)  %>
+		       	</li>
+		       	<li>
+		       		<%= link_to t('.sign_up', default: 'Sign up'), new_registration_path(User) %>
+	       		</li>
+		       <% end %>
+		    </ul>
+		    </div>
+		  </div>
+		</nav>
+		<div class="col-md-offset-2 col-md-8">
+    <%= yield %>
+  </body>
+</html>

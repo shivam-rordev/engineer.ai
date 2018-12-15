@@ -1,0 +1,17 @@
+<%- model_class = User -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:email) %>:</strong></dt>
+  <dd><%= @user.email %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:first) %>:</strong></dt>
+  <dd><%= @user.first %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:last) %>:</strong></dt>
+  <dd><%= @user.last %></dd>
+</dl>
+
+<% if current_user.has_role? :admin %>
+  <%= link_to t('.secret codes associate user list'),secret_codes_path, :class => 'btn btn-default'  %>
+<% end %>
